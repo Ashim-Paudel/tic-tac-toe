@@ -1,4 +1,4 @@
-replay_phrases=['OK','OKAY',"HUSS","HUSH",'OKEY','HUNCHA']    #created some lists of nepali phrases similar in meaning to yes
+replay_phrases=['OK','OKAY',"HUSS","HUSH",'OKEY','HUNCHA']                        #created some lists of nepali phrases similar in meaning to yes
 
 def printboard(board):#function to print full board
     print()
@@ -19,7 +19,7 @@ def board_is_full_check(board):
     if ' ' in board:
         return False
 
-def is_win(board, mark):   #function to check if anyone has won the game and return boolean
+def is_win(board, mark):                         #function to check if anyone has won the game and return boolean
     if board[1]==board[2]==board[3]==mark: #row1
         return True
     elif board[4]==board[5]==board[6]==mark: #row2
@@ -38,11 +38,11 @@ def is_win(board, mark):   #function to check if anyone has won the game and ret
         return True
    
 
-def choosemarker():  #function to allow first player to choose marker
+def choosemarker():                                               #function to allow first player to choose marker
     '''used to just assign certain marker to player'''
-    global marker1,marker2    #calling the global variables for marker
+    global marker1,marker2                                        #calling the global variables for marker
     marker1=input('\nhey '+player1+", Say which marker you want to use?(x/o):   ").upper()
-    while marker1!="X" and marker1!="O":    #correcting user to input correct marker
+    while marker1!="X" and marker1!="O":                          #correcting user to input correct marker
         print("'{}' marker is unavailable".format(marker1))
         marker1=input('\nhey '+player1+", Say which marker you want to use?(x/o):   ").upper()
     if marker1=="X":
@@ -54,27 +54,27 @@ def choosemarker():  #function to allow first player to choose marker
     print(player2+' will use: '+marker2)
     print()
     
-def isavailable(board,place):        #function to check space availability
+def isavailable(board,place):                                     #function to check space availability
     '''input: boardlist name  and place to place the marker
     output: boolean(true if place is available, false if place is not available)'''
     try :
         place=int(place)   #if converting into integer is possible then carry so
         if place not in range(1,10):
             return False
-        elif "X" in board[place] or "O" in board[place]:    #checking whether the place is empty or not
+        elif "X" in board[place] or "O" in board[place]:         #checking whether the place is empty or not
             return False
         elif "X" and "O" not in board[place]:
             return True
-    except:    #correcting user from inputting a non integer
+    except:                                                      #correcting user from inputting a non integer
         return False
     
 
-def markerplacer(board,insert_to_place,marker):     #function to place marker to desired place
+def markerplacer(board,insert_to_place,marker):                  #function to place marker to desired place
     board[int(insert_to_place)]=marker
     
 #program starts here
 
-program_active=True                  #declaring a program active variable
+program_active=True                                             #declaring a program active variable
 
 print('\t\t\t\tWelcome to TIC-TAC-TOE')
 print('\t\t\t\t'+'='*22)
@@ -88,7 +88,7 @@ marker2='none'
 
 while program_active:
     choosemarker()
-    board_list=['zeroth value']+[' ']*9     #creating list for creating board
+    board_list=['zeroth value']+[' ']*9                                  #creating list for creating board
     printboard(board_list)
     while ' ' in board_list:     #while space is still available
         print("It's {}'s turn".format(player1))
@@ -106,7 +106,7 @@ while program_active:
             break
         else:
             pass
-        if board_is_full_check(board_list):         #full board checkup
+        if board_is_full_check(board_list):                          #full board checkup
             if not is_win(board_list,marker1) and not is_win(board_list,marker2):
                 print('game is draw')
                 break
@@ -130,7 +130,7 @@ while program_active:
             break
         else:
             pass
-        if board_is_full_check(board_list):   #checking whether space is full or not
+        if board_is_full_check(board_list):                               #checking whether space is full or not
             if not is_win(board_list,marker1) and not is_win(board_list,marker2):
                 print('game is draw')
                 break
